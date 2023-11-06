@@ -120,7 +120,7 @@ export default {
 }
 
 .information__image1 {
-    background-image: url('~assets/img/Logo/Inspiration_image_3.jpg');
+    background-image: url('~assets/img/Logo/inspiration_image_3.jpg');
     /* ~assets mengacu pada folder assets dalam proyek Nuxt */
     background-size: cover;
     background-repeat: center;
