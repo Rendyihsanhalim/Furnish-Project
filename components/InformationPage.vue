@@ -3,7 +3,7 @@
         <div class="information">
 
 
-            <div class="information__text">
+            <div class="information__text" ref="informationText">
                 <div class="information__title">
                     <h1 class="information__title1">Finest Home</h1>
                     <h1 class="information__title2">Why Furnish ? </h1>
@@ -35,7 +35,7 @@
             </div>
 
 
-            <div class="information__image">
+            <div class="information__image" ref="informationImg">
                     <div class="information__image1"></div>
 
                     <div class="information__image2"></div>
@@ -44,12 +44,48 @@
         </div>
     </div>
 </template>
+<script type="module">
+export default {
+  mounted() {
+    this.animateOnScroll();
+  },
+  methods: {
+    animateOnScroll() {
+      this.$gsap.registerPlugin(this.$ScrollTrigger);
+
+      this.$gsap.from('.information__text', {
+        x: -100, // Start off-screen to the left
+        opacity: 0, // Start with 0 opacity (hidden)
+        ease: 'Power1.easeOut',
+        scrollTrigger: {
+          trigger: '.information__text',
+          start: 'top 90%', // Start animation when 80% of the element is in the viewport
+          end: 'center center',
+          scrub: true,
+        },
+      });
+
+      this.$gsap.from('.information__image', {
+        x: 100, // Start off-screen to the right
+        opacity: 0, // Start with 0 opacity (hidden)
+        ease: 'Power1.easeOut',
+        scrollTrigger: {
+          trigger: '.information__image',
+          start: 'top 80%', // Start animation when 80% of the element is in the viewport
+          end: 'center center',
+          scrub: true,
+        },
+      });
+    },
+  },
+};
+</script>
 
 
 <style scoped>
 .information-container {
-    margin: 0 1.5rem;
-    padding-top: 5.5rem;
+    margin: 0 2rem;
+    padding-top: 9rem;
 }
 
 .information {
@@ -65,16 +101,17 @@
     row-gap: 1rem;
     font-family: "Poppins";
     font-weight: 400;
+
 }
 
 .information__title1 {
     font-size: 1.5rem;
-    color: rgb(94, 94, 94);
+    color:rgb(29, 29, 49);
 }
 
 .information__title2 {
     font-size: 2rem;
-    color: rgb(94, 94, 94);
+    color:rgb(29, 29, 49);
 }
 
 .information__image {
@@ -130,7 +167,7 @@ margin-top: 0.5rem;
 }
 
 .information__icons-big{
-    margin-left:0.15rem;
+    margin-left:0.1rem;
     font-size: 1.1rem;
     margin-top: 0.5rem;
 }
@@ -139,7 +176,7 @@ margin-top: 0.5rem;
 @media screen and (max-width: 320px) {
     .information-container {
         margin: 0 1rem;
-        padding-top: 10.5rem;
+        padding-top: 2.5rem;
     }
 
     .information__image1 {
@@ -158,11 +195,27 @@ margin-top: 0.5rem;
         top: 80px;
 
     }
+
+    .information__text{
+        width:200px;
+    }
+
+    .information__title1{
+        font-size:1.5rem;
+    }
+
+    .information__title2{
+        font-size: 2rem;
+    }
 }
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {
+
+    .information-container{
+        padding-top:12.5rem ;
+    }
     .information__text {
         width: 500px;
     }
@@ -178,19 +231,21 @@ margin-top: 0.5rem;
 
     .information__image {
         margin: 0 auto;
+        width:400px;
     }
 
     .information__image1 {
 
-        width: 220px;
+        width: 270px;
         height: 300px;
         position: absolute;
         left: 30px;
 
+
     }
 
     .information__image2 {
-        width: 170px;
+        width: 220px;
         height: 300px;
         position: absolute;
         top: 80px;
@@ -204,7 +259,7 @@ margin-top: 0.5rem;
 
     .information-container {
         margin: 0 1.5rem;
-        padding-top: 0rem;
+        padding-top: 5.5rem;
     }
 
     .information__text {
@@ -217,7 +272,7 @@ margin-top: 0.5rem;
     }
 
     .information__image {
-        height: max-content;
+        width:400px;
     }
 
     .information__image1 {
@@ -225,7 +280,7 @@ margin-top: 0.5rem;
         width: 420px;
         height: 300px;
         position: absolute;
-        left: -30px;
+        left: 20px;
 
     }
 
@@ -234,7 +289,7 @@ margin-top: 0.5rem;
         height: 300px;
         position: absolute;
         top: 80px;
-        right: 60px;
+        right: 90px;
 
     }
 }
@@ -244,6 +299,10 @@ margin-top: 0.5rem;
         display: grid;
         grid-template-columns: repeat(2, max-content);
         column-gap: 2.5rem;
+    }
+
+    .information-container{
+        padding-top:9rem;
     }
 
     .information__text {
@@ -268,7 +327,7 @@ margin-top: 0.5rem;
         height: 300px;
         position: absolute;
         top: 100px;
-        right: -120px;
+        right: -20px;
 
     }
 
@@ -295,7 +354,7 @@ margin-top: 0.5rem;
 
         position: absolute;
         top: 100px;
-        right: -350px;
+        right: 10px;
 
     }
 

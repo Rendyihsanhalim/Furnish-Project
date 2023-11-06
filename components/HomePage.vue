@@ -1,20 +1,25 @@
 <template>
       <section class="home">
         <div class="home__container">
-            <img src="~/assets/img/Sofa/SOFAHOME.png" class="home__img" alt="">
+          <img
+        ref="homeImg"
+        src="~/assets/img/Sofa/SOFAHOME.png"
+        class="home__img"
+        alt=""
+      />
 
 
-            <div class="home__text">
+            <div class="home__text" ref="homeText">
               <h1 class="home__title">The Creative<br>Space Edition.</h1>
 
               <p class="home__description">Minimalist as you can and see your future furniture here </p>
 
-              <a href="" class="button__home button_flex">
+              <a class="button__home button_flex">
                 Explore <i class="fa-solid fa-arrow-right button__icon"></i>
               </a>
 
             </div>
-            <div class="home__social">
+            <div  ref="homeSocial" class="home__social">
               <span class="social__follow">Follow Us</span>
               <div class="social__menu">
                   <a href="" class="social__link"><i class="fa-brands fa-instagram"></i></a>
@@ -25,6 +30,42 @@
           </div>
       </section>
 </template>
+
+
+<script>
+import gsap from 'gsap';
+
+export default {
+  mounted() {
+    const homeImg = this.$refs.homeImg;
+    const homeText = this.$refs.homeText;
+    const homeSocial = this.$refs.homeSocial;
+
+    gsap.from(homeImg, {
+      opacity: 0,
+      y: '-60px',  // Menggunakan '60px' untuk jarak
+      duration: 2.5,  // Durasi animasi (2.5 detik)
+      delay: 0.65,  // Delay sebelum animasi dimulai (0.4 detik)
+    });
+
+    
+    gsap.from(homeSocial, {
+      opacity: 0,
+      y: '-60px',  // Menggunakan '60px' untuk jarak
+      duration: 2.5,  // Durasi animasi (2.5 detik)
+      delay: 0.85,  // Delay sebelum animasi dimulai (0.4 detik)
+    });
+
+    gsap.from(homeText, {
+      opacity: 0,
+      y: '-60px',  // Menggunakan '60px' untuk jarak
+      duration: 2.5,  // Durasi animasi (2.5 detik)
+      delay: 0.4,  // Delay sebelum animasi dimulai (0.4 detik)
+    });
+  },
+};
+</script>
+
   
   <style scoped>
 
@@ -96,7 +137,7 @@
 
   .home__social{
     position:absolute;
-    top:2rem;
+    top:3.5rem;
     right:-2rem;
     display:grid;
     justify-items: center;
@@ -124,95 +165,96 @@
     justify-self: center;
   }
 
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
 
+    @media screen and (max-width: 320px)  {
 
-    @media (min-width: 319px) and (max-width: 576px) {
+      .home__container{
+        row-gap: 3rem;
+      }
+      .home__title{
 
-    .container{
-      padding-top: 4rem;
+        font-size:1.5rem;
+        line-height:3rem;
+
+      }
+
+      .home__description{
+        font-size:1rem;
+      }
+
+      .home__img{
+        width:200px;
+      }
+
     }
-  .container img {
-    position: absolute;
-    width: 280px;
-    top: 250px;
-    left: 40px;
+
+      /* For Medium devices */
+    @media screen and (min-width: 576px) {
+      .home__img{
+        width:450px;
+      }
+
+      .home__social{
+        right:-2rem;
+      }
+
+      .social__follow{
+  
+    font-size: 1.25rem;
+   
   }
 
-  .paragraph {
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-left: 0px;
+  .social__link{
+    color:black;
+    font-size: 1.25rem;
   }
-
-  .paragraph1 {
-    font-size: 2.5rem;
-  }
-  .paragraph2{
-    padding-top:.85rem;
-    font-size: 1rem;
-  }
-
-}
-
-@media (min-width: 576px) and (max-width: 768px) {
-
- 
-  .container{
-      padding-top:4rem;
     }
-  .container img {
-    position: absolute;
-    width: 500px;
-    top: 160px;
-    left: 80px;
+
+  /* For large devices */
+  @media screen and (min-width: 992px) {
+
+    .home{
+    padding:8rem 0 0 2rem;
   }
 
-  .paragraph {
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-left:0;
+    .home__container{
+    display:grid;
+    grid-template-columns: repeat(2,max-content);
+    column-gap: 2rem;
+    position:relative;
+  
+    }
+
+    .home__img{
+      width:350px;
+      order:1;
+    }
+    .home__text{
+      width:450px;
+    }
+
+    .home__title{
+
+    font-size:3.5rem; 
+    line-height:5rem;
+
+
   }
 
-  .paragraph1 {
-    font-size: 3.25rem;
-    white-space: nowrap; /* Mencegah teks melompat ke baris baru */
-  }
-  .paragraph1 br {
-    display: none; /* Menyembunyikan tag <br> */
-  }
-  .paragraph2{
-    padding-top:1rem;
-    font-size: 1.5rem;
+  @media screen and (min-width: 1024px) {
+    .home__img{
+      width:550px;
+      order:1;
+    }
+
+    .home__container{
+      align-items: center;
+      column-gap: 3rem;
+    }
   }
 
 }
-@media (min-width: 769px) and (max-width: 1023px) {
-
-
-  .container img {
-    position: absolute;
-    width: 500px;
-    top: 100px;
-    left: 250px;
-  }
-
-  .paragraph1 {
-    font-size: 3.25rem;
-  }
-  .paragraph2{
-    padding-top:.85rem;
-    font-size: 1rem;
-  }
-}
-
-
   </style>
   

@@ -159,7 +159,7 @@ export default {
 }
 
 .nav__img {
-    width: 5rem;
+    width: 6rem;
     display: inline-flex;
     filter: drop-shadow();
     background-color: rgba(rgb(255, 255, 255), .2);
