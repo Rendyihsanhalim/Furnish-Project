@@ -263,7 +263,7 @@ export default {
 /* For large devices */
 @media screen and (min-width:1023px){
   .nav{
-    height: calc(3.5rem+ 2rem);
+    height: calc(3.5rem);
     width: 100%;
     margin-inline:3rem;
     gap:1.75rem;
