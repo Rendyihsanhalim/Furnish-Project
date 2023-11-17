@@ -14,7 +14,7 @@
     background: linear-gradient(180deg,rgba(247, 245, 245, 0.87),rgb(235, 229, 229),white,white);
 }
 .terluar{
-    height:2000px;
+    height:3000px;
     overflow-y:hidden ;
 }
 
